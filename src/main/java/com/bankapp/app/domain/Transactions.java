@@ -50,7 +50,23 @@ public class Transactions {
 	        this.type = type;
 	        this.accNo=accNo;
 	    }
-	    public int getTransactionId() {
+	    public Date getDate() {
+			return date;
+		}
+
+		public void setDate(Date date) {
+			this.date = date;
+		}
+
+		public Date getTime() {
+			return time;
+		}
+
+		public void setTime(Date time) {
+			this.time = time;
+		}
+
+		public int getTransactionId() {
 	        return transactionId;
 	    }
 	    public void setId(int transactionId) {

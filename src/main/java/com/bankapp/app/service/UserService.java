@@ -34,6 +34,9 @@ public class UserService {
 		{
 			return "Account already registered";
 		}
+		else if(userRepository.existsByUsername(user.getUsername())) {
+			return "Username already registered";
+		}
 		else {
 			return "proceed";
 		}

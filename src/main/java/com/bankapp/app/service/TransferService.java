@@ -3,6 +3,7 @@ package com.bankapp.app.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bankapp.app.controller.TransactionController;
 import com.bankapp.app.domain.Account;
 import com.bankapp.app.repository.AccountRepository;
 
@@ -11,15 +12,16 @@ public class TransferService {
 
 	@Autowired
     private AccountRepository accountRepository;
-
- 
-
+    @Autowired
+    private TransactionController transController;
     
-    public String getAccount(String accountNumber){
+    public Account getAccount(String accountNumber){
         Account account= accountRepository.findByAccountnumber(accountNumber);
         if(account!=null)
-            return account.getName()+"\n"+account.getIfsccode();
-        return "Account Not Found"; 
+            return account;
+        else {
+        	return null;
+        }
     }
     
     public String Transfer(String fromAccountNumber, String toAccountNumber, int amount) {
@@ -41,6 +43,7 @@ public class TransferService {
         senderAccount.setBalance(senderAccount.getBalance() - amount);
         accountRepository.save(receiverAccount);
         accountRepository.save(senderAccount);
+        transController.addTransactions(amount, fromAccountNumber, toAccountNumber);
         return "Transfer Success";
 
  

@@ -10,12 +10,9 @@ import com.bankapp.app.repository.UserRepository;
 public class ProfileService {
 	@Autowired
 	private UserRepository userRepository;
-	public String getUser(String accountNumber) {
+	public User getUser(String accountNumber) {
         User user=userRepository.findByAccountnumber(accountNumber);
-        return user.getFirstname()+"\n"+
-        	user.getLastname()+"\n"+
-        	user.getPhonenumber()+"\n"+
-        	user.getUsername();
+        return user;
     }
    
     public String updatePassword(String accountNumber,String currentPassword, String newPassword) {

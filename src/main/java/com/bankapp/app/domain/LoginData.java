@@ -2,7 +2,7 @@ package com.bankapp.app.domain;
 
 public class LoginData {
 
-	 private String userName;
+	 	private String userName;
 	    private String password;
 	    
 	    public LoginData() {}
